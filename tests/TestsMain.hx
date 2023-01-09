@@ -1,17 +1,19 @@
-package;
+#if macro
+import hxser.gen.CodeBuilder;
+import hxser.schema.SchemaItem;
 
-import utest.Runner;
-import utest.ui.Report;
+using haxe.macro.ComplexTypeTools;
+#end
 
 class TestsMain {
+	public static function main() {
+		var data = buildSimplest()(10);
+	}
 
-    public static function main() {
-        var runner = new Runner();
+	macro static function buildSimplest() {
+		var cb = new CodeBuilder(null, null);
+		cb.build();
 
-        runner.addCases('partials');
-
-        Report.create(runner, NeverShowSuccessResults, AlwaysShowHeader);
-        runner.run();
-    }
-
+		return macro function(x) return x;
+	}
 }

@@ -1,11 +1,6 @@
--lib utest
--lib hxnodejs
--D nodejs
--D analyzer-optimize
--dce full
+--macro define('nodejs')
 -main TestsMain
 -debug
---macro nullSafety('hxser', Strict)
 -cp src/
 -cp tests/
 -js build/tests.js
