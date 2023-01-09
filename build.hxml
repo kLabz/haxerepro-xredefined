@@ -1,7 +1,6 @@
 -main TestsMain
 --macro define('nodejs')
 -D nodejs
--debug
 -cp src/
--cp tests/
--js build/tests.js
+--no-output
+-js test.js
