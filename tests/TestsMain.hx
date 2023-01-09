@@ -11,7 +11,7 @@ class TestsMain {
 	}
 
 	macro static function buildSimplest() {
-		var cb = new CodeBuilder(null, null);
+		var cb = new CodeBuilder(null);
 		cb.build();
 
 		return macro function(x) return x;

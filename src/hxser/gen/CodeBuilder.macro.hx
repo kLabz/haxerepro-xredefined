@@ -1,12 +1,22 @@
 package hxser.gen;
 
 import hxser.DeclarativeAst.Root;
-import hxser.schema.SchemaItem;
 
 class CodeBuilder {
-	public function new(schema:SchemaItem, ast:Root) {}
+    var ast:Root;
 
-	public function build():Dynamic {
-		return null;
-	}
+    public function new(ast:Root) {
+        this.ast = ast;
+    }
+
+    public function build():Dynamic {
+        switch ast {
+            case null:
+                return null;
+
+            case Function(data):
+                return null;
+        }
+    }
+
 }
