@@ -1,4 +1,3 @@
---macro define('nodejs')
 -main TestsMain
 -debug
 -cp src/
