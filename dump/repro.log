@@ -1,7 +1,8 @@
 - echo "Trigger first error that leads to X redefined from X"
 - echo "----------------------------------------------------"
 - root "/tmp/tmp.pAKSFWWUnw"
-- displayArguments = ["build.hxml"]
+- displayArguments
+["build.hxml"]
 
 - start
 
