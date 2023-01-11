@@ -32,17 +32,35 @@
 - stepByStep 0
 # Print server response for next request:
 - displayResponse
-> displayRequest 42 "server/something"
+> serverRequest 42 "server/something"
 ["..."]
+# Abort repro (with exit code) on first failure
+# Currently supports compilation failure and (hacky) completion request failure
+- abortOnFailure
+# Can also be enabled/disabled
+- abortOnFailure 0
+- abortOnFailure 1
 
-# Debug memory (displayResponse is optional)
+# server/memory/module example
 # ---------------------------------
 - displayResponse
-> displayRequest "server/memory/module"
+> serverRequest "server/memory/module"
 ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/memory/module\",\"params\":{\"signature\":\"46758be9d6852a00c50c16bb8ef5c666\",\"path\":\"hxser.gen.CodeBuilder\"}}"]
 
-# Debug cache (displayResponse is optional)
+# server/module example
 # ---------------------------------
 - displayResponse
-> displayRequest "server/module"
+> serverRequest "server/module"
 ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/module\",\"params\":{\"signature\":\"46758be9d6852a00c50c16bb8ef5c666\",\"path\":\"hxser.gen.CodeBuilder\"}}"]
+
+# server/contexts example
+# ---------------------------------
+- displayResponse
+> serverRequest "server/contexts"
+["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/contexts\"}"]
+
+# server/type example
+# ---------------------------------
+- displayResponse
+> serverRequest "server/type"
+["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/type\",\"params\":{\"signature\":\"46758be9d6852a00c50c16bb8ef5c666\",\"modulePath\":\"hxser.gen.CodeBuilder\",\"typeName\":\"CodeBuilder\"}}"]
