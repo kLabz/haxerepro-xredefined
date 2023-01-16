@@ -18,29 +18,26 @@
 > serverRequest "server/contexts"
 ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/contexts\"}"]
 
-# - displayResponse
-# > serverRequest "server/type"
-# ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/type\",\"params\":{\"signature\":\"03f8c3216332b3d1d6f3df4af521331e\",\"modulePath\":\"CodeBuilder\",\"typeName\":\"CodeBuilder\"}}"]
-
+# - assert success
+- assert 23 items
 - echo "data.args.|"
-> serverRequest "display/completion"
-["--cwd","/git/haxe-libs/haxeserver/repro/xredefined","build.hxml","--display","{\"jsonrpc\":\"2.0\",\"id\":36,\"method\":\"display/completion\",\"params\":{\"file\":\"/git/haxe-libs/haxeserver/repro/xredefined/src/CodeBuilder.macro.hx\",\"contents\":\"class CodeBuilder {\\n    var data:FunctionData;\\n\\n    public function new(data:FunctionData) {\\n        this.data = data;\\n    }\\n\\n    public function build():Void {\\n\\t\\tdata.args.\\n    }\\n\\n}\\n\\n@:structInit class FunctionData {\\n\\tpublic final args:Array<String>;\\n}\\n\",\"offset\":173,\"wasAutoTriggered\":true,\"meta\":[\":deprecated\"]}}"]
-
 - displayResponse
-> serverRequest "server/contexts"
-["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/contexts\"}"]
-
-# - displayResponse
-# > serverRequest "server/type"
-# ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/type\",\"params\":{\"signature\":\"03f8c3216332b3d1d6f3df4af521331e\",\"modulePath\":\"CodeBuilder\",\"typeName\":\"CodeBuilder\"}}"]
-
-- echo "data.args.|"
 > serverRequest "display/completion"
 ["--cwd","/git/haxe-libs/haxeserver/repro/xredefined","build.hxml","--display","{\"jsonrpc\":\"2.0\",\"id\":36,\"method\":\"display/completion\",\"params\":{\"file\":\"/git/haxe-libs/haxeserver/repro/xredefined/src/CodeBuilder.macro.hx\",\"contents\":\"class CodeBuilder {\\n    var data:FunctionData;\\n\\n    public function new(data:FunctionData) {\\n        this.data = data;\\n    }\\n\\n    public function build():Void {\\n\\t\\tdata.args.\\n    }\\n\\n}\\n\\n@:structInit class FunctionData {\\n\\tpublic final args:Array<String>;\\n}\\n\",\"offset\":173,\"wasAutoTriggered\":true,\"meta\":[\":deprecated\"]}}"]
 
-# - echo "data.args.|"
-# > serverRequest "display/completion"
-# ["--cwd","/git/haxe-libs/haxeserver/repro/xredefined","build.hxml","--display","{\"jsonrpc\":\"2.0\",\"id\":36,\"method\":\"display/completion\",\"params\":{\"file\":\"/git/haxe-libs/haxeserver/repro/xredefined/src/CodeBuilder.macro.hx\",\"contents\":\"class CodeBuilder {\\n    var data:FunctionData;\\n\\n    public function new(data:FunctionData) {\\n        this.data = data;\\n    }\\n\\n    public function build():Void {\\n\\t\\tdata.args.\\n    }\\n\\n}\\n\\n@:structInit class FunctionData {\\n\\tpublic final args:Array<String>;\\n}\\n\",\"offset\":173,\"wasAutoTriggered\":true,\"meta\":[\":deprecated\"]}}"]
+# - assert success
+- assert 23 items
+- echo "data.args.|"
+- displayResponse
+> serverRequest "display/completion"
+["--cwd","/git/haxe-libs/haxeserver/repro/xredefined","build.hxml","--display","{\"jsonrpc\":\"2.0\",\"id\":36,\"method\":\"display/completion\",\"params\":{\"file\":\"/git/haxe-libs/haxeserver/repro/xredefined/src/CodeBuilder.macro.hx\",\"contents\":\"class CodeBuilder {\\n    var data:FunctionData;\\n\\n    public function new(data:FunctionData) {\\n        this.data = data;\\n    }\\n\\n    public function build():Void {\\n\\t\\tdata.args.\\n    }\\n\\n}\\n\\n@:structInit class FunctionData {\\n\\tpublic final args:Array<String>;\\n}\\n\",\"offset\":173,\"wasAutoTriggered\":true,\"meta\":[\":deprecated\"]}}"]
 
+- assert fail
+- displayResponse
 > serverRequest "compilation"
 ["build.hxml"]
+
+< compilationResult
+<<EOF
+
+EOF
