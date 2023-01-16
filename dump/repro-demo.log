@@ -41,6 +41,12 @@
 - abortOnFailure 0
 - abortOnFailure 1
 
+# server/contexts example
+# ---------------------------------
+- displayResponse
+> serverRequest "server/contexts"
+["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/contexts\"}"]
+
 # server/memory/module example
 # ---------------------------------
 - displayResponse
@@ -52,12 +58,6 @@
 - displayResponse
 > serverRequest "server/module"
 ["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/module\",\"params\":{\"signature\":\"46758be9d6852a00c50c16bb8ef5c666\",\"path\":\"hxser.gen.CodeBuilder\"}}"]
-
-# server/contexts example
-# ---------------------------------
-- displayResponse
-> serverRequest "server/contexts"
-["--display","{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"server/contexts\"}"]
 
 # server/type example
 # ---------------------------------
